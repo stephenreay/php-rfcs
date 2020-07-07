@@ -8,7 +8,7 @@ Allow traits to declare constants, in a similar fashion to classes and interface
 
 ### Access
 
-Trait constants must be accessed via either the name of a class that uses the trait, or via the `self` keyword, e.g. from within the trait itself, or within a class that uses it.
+Trait constants must be accessed via either the name of a class that uses the trait, or via the `self` keyword from within the trait, or via a class referencing keyword (i.e. self, static, parent) from within a class (or one of it's child classes) that uses the trait.
 
 Trait constants cannot be accessed directly via the name of the trait. (See https://wiki.php.net/rfc/deprecations_php_8_0#accessing_static_members_on_traits)
 
@@ -74,7 +74,24 @@ As with methods of traits, constant visibility within the class can be changed u
 	
 	class C {
 		use Foo, Baz;
+		
+		public function __construct() {
+			var_dump(self::FLAG_2);
+		}
 	}
+	
+	class D {
+		public static function testD() {
+			var_dump(
+				self::FLAG_2,
+				parent::FLAG_2,
+				static::FLAG_2
+			);
+		}
+	}
+	
+	
+	var_dump(C::FLAG_2);
 	
 
 	// Fatal Error
@@ -89,6 +106,5 @@ As with methods of traits, constant visibility within the class can be changed u
 		protected const FLAG_2 = 'two';
 	}
 	
-
-	
+	var_dump(Baz::FLAG_2);
 	
