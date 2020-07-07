@@ -30,10 +30,10 @@ As with methods of traits, constant visibility within the class can be changed u
 		public const FLAG_2 = 2;
 	
 		public function doFoo(int $flags): void {
-			if ($flags & self::FLAG_1 === self::FLAG_1) {
+			if (($flags & self::FLAG_1) === self::FLAG_1) {
 				echo 'Got flag 1';
 			}
-			if ($flags & self::FLAG_2 === self::FLAG_2) {
+			if (($flags & self::FLAG_2) === self::FLAG_2) {
 				echo 'Got flag 2';
 			}
 		}
