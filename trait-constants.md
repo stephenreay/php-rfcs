@@ -10,7 +10,7 @@ Allow traits to declare constants, in a similar fashion to classes and interface
 
 Trait constants must be accessed via either the name of a class that uses the trait, or via the `self` keyword from within the trait, or via a class referencing keyword (i.e. self, static, parent) from within a class (or one of it's child classes) that uses the trait.
 
-Trait constants cannot be accessed directly via the name of the trait. (See https://wiki.php.net/rfc/deprecations_php_8_0#accessing_static_members_on_traits)
+Trait constants cannot be accessed directly via the name of the trait. (See https://wiki.php.net/rfc/deprecations_php_8_1#accessing_static_members_on_traits)
 
 ### Conflicts
 
